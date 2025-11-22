@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@100..1000&family=Mona+Sans:wght@100..1000&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-google-sans-flex: "Google Sans Flex", sans-serif;
+  --font-mona-sans: "Mona Sans", sans-serif;
+  --color-primary-auth-bg: #fbf7f1;
+  --color-primary: #334e40;
+}
+
+#root {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
