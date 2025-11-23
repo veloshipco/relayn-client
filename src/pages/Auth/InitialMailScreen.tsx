@@ -29,7 +29,7 @@ export default function InitialMailScreen({
 }) {
   const [isTypingPassword, setIsTypingPassword] = useState<boolean>(false);
   const passwordStrength = useMemo<PasswordStrength>(() => {
-    return isTypingPassword ? getPasswordStrength(password) : "weak";
+    return isTypingPassword ? getPasswordStrength(password) : "Weak";
   }, [password, isTypingPassword]);
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -150,11 +150,61 @@ export default function InitialMailScreen({
               boxShadow: shadowConstant as string,
             }}
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            onFocus={() => setIsTypingPassword(true)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setIsTypingPassword(true);
+            }}
             onBlur={() => setIsTypingPassword(false)}
           />
         </div>
+        {isTypingPassword && (
+          <div className="font-google-sans-flex password-strength-container mt-4 mb-8">
+            <div
+              className="strength-texts flex items-center justify-between mb-2"
+              style={{ lineHeight: "19.6px", letterSpacing: "-0.14px" }}
+            >
+              <p className="text-[#6E6E6E] font-medium text-sm">Strength</p>
+              <p className="text-[#141414] font-semibold text-sm">
+                {passwordStrength}
+              </p>
+            </div>
+            <div
+              className="strength-bar relative w-full h-4 rounded-full overflow-hidden"
+              style={{
+                backgroundColor: "#F5F5F5",
+                border: "0.5px solid #E0E0E0",
+              }}
+            >
+              <div
+                className={`absolute left-0 top-0 h-full rounded-full ${
+                  passwordStrength === "Weak"
+                    ? "w-[33%]"
+                    : passwordStrength === "Medium"
+                    ? "w-[62%]"
+                    : "w-full"
+                }`}
+                style={{
+                  backgroundColor:
+                    passwordStrength === "Weak"
+                      ? "#E81818"
+                      : passwordStrength === "Medium"
+                      ? "#E8A318"
+                      : "#16B846",
+                }}
+              >
+                {passwordStrength === "Medium" && (
+                  <div className="absolute left-[50%] top-0 w-px h-full bg-white opacity-80"></div>
+                )}
+                {passwordStrength === "Strong" && (
+                  <>
+                    <div className="absolute left-[33.33%] top-0 w-px h-full bg-white opacity-80"></div>
+                    <div className="absolute left-[66.66%] top-0 w-px h-full bg-white opacity-80"></div>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
         <button
           className={`px-6 py-3 bg-primary rounded-[1000px] text-white font-semibold ${
             isLongScreen ? "mt-12" : "mt-8"
@@ -198,7 +248,15 @@ export default function InitialMailScreen({
           </button>
         </div>
         <div
-          className={`login-link ${isLongScreen ? "mt-12" : "mt-8"}`}
+          className={`login-link ${
+            isLongScreen
+              ? isTypingPassword
+                ? "mt-4"
+                : "mt-12"
+              : isTypingPassword
+              ? "mt-2"
+              : "mt-8"
+          }`}
           style={{
             lineHeight: "19.2px",
             letterSpacing: "-0.16px",

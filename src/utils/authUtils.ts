@@ -1,8 +1,8 @@
-export type PasswordStrength = "weak" | "medium" | "strong";
+export type PasswordStrength = "Weak" | "Medium" | "Strong";
 
 export const getPasswordStrength = (password: string): PasswordStrength => {
   if (!password || password.length === 0) {
-    return "weak";
+    return "Weak";
   }
 
   const length = password.length;
@@ -21,7 +21,7 @@ export const getPasswordStrength = (password: string): PasswordStrength => {
     hasSpecialChar,
   ].filter(Boolean).length;
 
-  // Check for common weak patterns
+  // Check for common Weak patterns
   const hasSequentialChars =
     /(abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz|012|123|234|345|456|567|678|789)/i.test(
       password
@@ -43,7 +43,7 @@ export const getPasswordStrength = (password: string): PasswordStrength => {
   else if (characterTypesCount >= 3) score += 2;
   else if (characterTypesCount >= 2) score += 1;
 
-  // Penalties for weak patterns
+  // Penalties for Weak patterns
   if (hasSequentialChars) score -= 1;
   if (hasRepeatedChars) score -= 1;
   if (hasCommonPattern) score -= 2;
@@ -56,19 +56,19 @@ export const getPasswordStrength = (password: string): PasswordStrength => {
     !hasCommonPattern &&
     score >= 5
   ) {
-    return "strong";
+    return "Strong";
   }
 
   // Strong: 10+ chars with 3+ types and good score
   if (length >= 10 && characterTypesCount >= 3 && score >= 4) {
-    return "strong";
+    return "Strong";
   }
 
   // Medium: 8+ chars with decent variety
   if (length >= 8 && characterTypesCount >= 2 && score >= 2) {
-    return "medium";
+    return "Medium";
   }
 
   // Weak: everything else
-  return "weak";
+  return "Weak";
 };
