@@ -8,10 +8,10 @@ export default function AuthRoot() {
   return (
     <div className="flex p-6 w-full h-screen">
       <div
-        className={`flex-1 ${
+        className={`flex-1 pl-[103px] ${
           isLongScreen
-            ? "pt-[30px] pb-[75px] pl-[127px] pr-[73px]"
-            : "pt-[20px] pb-[50px] pl-[100px] pr-[60px]"
+            ? "pt-[30px] pb-[75px] pr-[73px]"
+            : "pt-[20px] pb-[50px] pr-[60px]"
         }`}
       >
         <Outlet />
@@ -54,7 +54,7 @@ export default function AuthRoot() {
               </p>
               <p
                 className={`font-google-sans-flex text-[#5A5A5A] font-medium ${
-                  innerHeight > 1024 ? "text-lg" : "text-base"
+                  isLongScreen ? "text-lg" : "text-base"
                 }`}
                 style={{
                   lineHeight: "21.6px",
