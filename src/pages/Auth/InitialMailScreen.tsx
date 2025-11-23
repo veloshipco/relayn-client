@@ -1,3 +1,4 @@
+import { useState, useMemo } from "react";
 import { Fragment } from "react";
 import type { FormEvent } from "react";
 import { Link } from "react-router";
@@ -6,6 +7,10 @@ import Tick from "../../Svg/tick";
 import Google from "../../Svg/google";
 import Microsoft from "../../Svg/microsoft";
 import { shadowConstant } from "../../utils/styleConstants";
+import {
+  getPasswordStrength,
+  type PasswordStrength,
+} from "../../utils/authUtils";
 
 export default function InitialMailScreen({
   isLongScreen,
@@ -22,10 +27,17 @@ export default function InitialMailScreen({
   setPassword: (password: string) => void;
   handleSubmit: () => void;
 }) {
+  const [isTypingPassword, setIsTypingPassword] = useState<boolean>(false);
+  const passwordStrength = useMemo<PasswordStrength>(() => {
+    return isTypingPassword ? getPasswordStrength(password) : "weak";
+  }, [password, isTypingPassword]);
+
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     handleSubmit();
   };
+
+  console.log("passwordStrength", passwordStrength);
 
   return (
     <Fragment>
@@ -139,6 +151,8 @@ export default function InitialMailScreen({
             }}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            onFocus={() => setIsTypingPassword(true)}
+            onBlur={() => setIsTypingPassword(false)}
           />
         </div>
         <button

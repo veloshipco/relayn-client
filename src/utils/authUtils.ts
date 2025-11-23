@@ -1,4 +1,4 @@
-type PasswordStrength = "weak" | "medium" | "strong";
+export type PasswordStrength = "weak" | "medium" | "strong";
 
 export const getPasswordStrength = (password: string): PasswordStrength => {
   if (!password || password.length === 0) {
