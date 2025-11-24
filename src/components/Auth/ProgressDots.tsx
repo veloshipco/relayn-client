@@ -1,13 +1,15 @@
 interface ProgressDotsProps {
   currentStep: number;
   onStepClick: (stepIndex: number) => void;
+  isIndependentAuthPageParent?: boolean;
 }
 
 export default function ProgressDots({
   currentStep,
   onStepClick,
+  isIndependentAuthPageParent,
 }: ProgressDotsProps) {
-  const totalSteps = 4;
+  const totalSteps = isIndependentAuthPageParent ? 3 : 4;
 
   return (
     <div className="progress-dots flex gap-3 mt-12">
