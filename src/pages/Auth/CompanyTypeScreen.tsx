@@ -28,7 +28,7 @@ export default function CompanyTypeScreen({
     <Fragment>
       <div
         className={`logo-container flex items-center gap-2 ${
-          isLongScreen ? "mb-[60px]" : "mb-[30px]"
+          isLongScreen ? "mb-[154px]" : "mb-[130px]"
         }`}
       >
         <img src={Logo} alt="Logo" width={20} height={20} />
@@ -52,7 +52,7 @@ export default function CompanyTypeScreen({
       >
         <div
           className={`company-type-container flex flex-col ${
-            isLongScreen ? "gap-4 mb-12" : "gap-3 mb-8"
+            isLongScreen ? "gap-4 mb-12" : "gap-3 mb-10"
           }`}
         >
           <label
@@ -85,7 +85,7 @@ export default function CompanyTypeScreen({
         </div>
 
         <button
-          className={`px-6 py-3 bg-primary rounded-[1000px] text-white font-semibold w-fit`}
+          className={`px-6 py-3 bg-primary rounded-[1000px] text-white font-semibold`}
           style={{
             lineHeight: "19.2px",
           }}

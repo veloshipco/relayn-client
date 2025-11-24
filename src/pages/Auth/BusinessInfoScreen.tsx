@@ -29,7 +29,7 @@ export default function BusinessInfoScreen({
     <Fragment>
       <div
         className={`logo-container flex items-center gap-2 ${
-          isLongScreen ? "mb-[60px]" : "mb-[30px]"
+          isLongScreen ? "mb-[154px]" : "mb-[130px]"
         }`}
       >
         <img src={Logo} alt="Logo" width={20} height={20} />
@@ -111,7 +111,7 @@ export default function BusinessInfoScreen({
 
         <div
           className={`company-size-container flex flex-col ${
-            isLongScreen ? "gap-4 mb-12" : "gap-3 mb-8"
+            isLongScreen ? "gap-4 mb-12" : "gap-3 mb-10"
           }`}
         >
           <label
@@ -133,10 +133,7 @@ export default function BusinessInfoScreen({
                 style={{
                   backgroundColor: companySize === size ? "#BD338F" : "#FFFFFF",
                   color: companySize === size ? "#FFFFFF" : "#505050",
-                  border:
-                    companySize === size
-                      ? "none"
-                      : "0.5px solid #E0E0E0",
+                  border: companySize === size ? "none" : "0.5px solid #E0E0E0",
                 }}
               >
                 {size}
@@ -146,7 +143,7 @@ export default function BusinessInfoScreen({
         </div>
 
         <button
-          className={`px-6 py-3 bg-primary rounded-[1000px] text-white font-semibold w-fit`}
+          className={`px-6 py-3 bg-primary rounded-[1000px] text-white font-semibold`}
           style={{
             lineHeight: "19.2px",
           }}
@@ -156,10 +153,10 @@ export default function BusinessInfoScreen({
         </button>
 
         <div className={`progress-dots flex gap-3 mt-12`}>
-            <div className="w-2 h-2 rounded-full bg-[#E0E0E0]"></div>
-            <div className="w-2 h-2 rounded-full bg-[#484848]"></div>
-            <div className="w-2 h-2 rounded-full bg-[#E0E0E0]"></div>
-            <div className="w-2 h-2 rounded-full bg-[#E0E0E0]"></div>
+          <div className="w-2 h-2 rounded-full bg-[#E0E0E0]"></div>
+          <div className="w-2 h-2 rounded-full bg-[#484848]"></div>
+          <div className="w-2 h-2 rounded-full bg-[#E0E0E0]"></div>
+          <div className="w-2 h-2 rounded-full bg-[#E0E0E0]"></div>
         </div>
       </form>
     </Fragment>

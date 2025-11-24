@@ -24,7 +24,7 @@ export default function VerificationSentScreen() {
       </div>
 
       <div className="flex-1 flex flex-col items-center justify-center">
-        <div className="flex flex-col items-center max-w-[500px] text-center">
+        <div className="flex flex-col items-center max-w-[1000px] text-center">
           <div className="mb-8">
             <GreenBgTick />
           </div>
@@ -37,8 +37,8 @@ export default function VerificationSentScreen() {
           </h1>
 
           <p
-            className="font-google-sans-flex text-[#5A5A5A] font-medium text-lg mb-12"
-            style={{ lineHeight: "21.6px" }}
+            className="font-google-sans-flex text-[#717171] font-medium text-lg mb-14 max-w-[500px]"
+            style={{ lineHeight: "27px", letterSpacing: "-0.18px" }}
           >
             We've sent you an email to verify your address. Please check your
             inbox to proceed!
