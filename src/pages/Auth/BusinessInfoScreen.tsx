@@ -132,7 +132,7 @@ export default function BusinessInfoScreen({
                 key={size}
                 type="button"
                 onClick={() => setCompanySize(size)}
-                className={`px-6 py-2 rounded-[100px] text-sm font-medium transition-colors`}
+                className={`px-6 py-2 rounded-[100px] text-sm font-medium cursor-pointer transition-colors`}
                 style={{
                   backgroundColor: companySize === size ? "#BD338F" : "#FFFFFF",
                   color: companySize === size ? "#FFFFFF" : "#505050",
@@ -146,7 +146,7 @@ export default function BusinessInfoScreen({
         </div>
 
         <button
-          className={`px-6 py-3 bg-primary rounded-[1000px] text-white font-semibold`}
+          className={`px-6 py-3 bg-primary rounded-[1000px] text-white font-semibold cursor-pointer`}
           style={{
             lineHeight: "19.2px",
           }}
