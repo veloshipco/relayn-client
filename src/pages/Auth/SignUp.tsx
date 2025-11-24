@@ -34,6 +34,22 @@ export default function SignUp() {
     navigate("/verification-sent");
   };
 
+  const handleStepClick = (stepIndex: number) => {
+    switch (stepIndex) {
+      case 0:
+        setPage("initialMailScreen");
+        break;
+      case 1:
+        setPage("businessInfoScreen");
+        break;
+      case 2:
+        setPage("companyTypeScreen");
+        break;
+      default:
+        break;
+    }
+  };
+
   const { isLongScreen } = calculateViewPortHeight();
 
   switch (page) {
@@ -59,6 +75,7 @@ export default function SignUp() {
           companySize={companySize}
           setCompanySize={setCompanySize}
           handleSubmit={handleBusinessInfoSubmit}
+          onStepClick={handleStepClick}
         />
       );
     case "companyTypeScreen":
@@ -68,6 +85,7 @@ export default function SignUp() {
           companyType={companyType}
           setCompanyType={setCompanyType}
           handleSubmit={handleCompanyTypeSubmit}
+          onStepClick={handleStepClick}
         />
       );
     default:

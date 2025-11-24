@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import Logo from "../../assets/onboarding/dummy_logo.png";
 import { shadowConstant } from "../../utils/styleConstants";
+import ProgressDots from "../../components/Auth/ProgressDots";
 
 interface BusinessInfoScreenProps {
   isLongScreen: boolean;
@@ -11,6 +12,7 @@ interface BusinessInfoScreenProps {
   companySize: string;
   setCompanySize: (size: string) => void;
   handleSubmit: () => void;
+  onStepClick: (stepIndex: number) => void;
 }
 
 const COMPANY_SIZES = ["1-10", "11-50", "51-200", "201-500", "500+"];
@@ -24,6 +26,7 @@ export default function BusinessInfoScreen({
   companySize,
   setCompanySize,
   handleSubmit,
+  onStepClick,
 }: BusinessInfoScreenProps) {
   return (
     <Fragment>
@@ -152,12 +155,7 @@ export default function BusinessInfoScreen({
           Continue
         </button>
 
-        <div className={`progress-dots flex gap-3 mt-12`}>
-          <div className="w-2 h-2 rounded-full bg-[#E0E0E0]"></div>
-          <div className="w-2 h-2 rounded-full bg-[#484848]"></div>
-          <div className="w-2 h-2 rounded-full bg-[#E0E0E0]"></div>
-          <div className="w-2 h-2 rounded-full bg-[#E0E0E0]"></div>
-        </div>
+        <ProgressDots currentStep={1} onStepClick={onStepClick} />
       </form>
     </Fragment>
   );

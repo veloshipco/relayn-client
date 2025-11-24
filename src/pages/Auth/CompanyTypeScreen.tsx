@@ -1,12 +1,14 @@
 import { Fragment } from "react";
 import Logo from "../../assets/onboarding/dummy_logo.png";
 import WhiteBgTick from "../../Svg/whiteBgTick";
+import ProgressDots from "../../components/Auth/ProgressDots";
 
 interface CompanyTypeScreenProps {
   isLongScreen: boolean;
   companyType: string;
   setCompanyType: (type: string) => void;
   handleSubmit: () => void;
+  onStepClick: (stepIndex: number) => void;
 }
 
 const COMPANY_TYPES = [
@@ -23,6 +25,7 @@ export default function CompanyTypeScreen({
   companyType,
   setCompanyType,
   handleSubmit,
+  onStepClick,
 }: CompanyTypeScreenProps) {
   return (
     <Fragment>
@@ -73,8 +76,8 @@ export default function CompanyTypeScreen({
                 className={`flex items-center justify-between px-4 py-3 rounded-[100px] text-sm font-medium transition-colors text-left`}
                 style={{
                   backgroundColor: companyType === type ? "#BD338F" : "#FFFFFF",
-                  color: companyType === type ? "#FFFFFF" : "#505050",
-                  border: companyType === type ? "none" : "0.5px solid #E0E0E0",
+                  color: companyType === type ? "#FFFFFF" : "#727272",
+                  border: companyType === type ? "none" : "0.5px solid #EEEEEE",
                 }}
               >
                 {type}
@@ -94,12 +97,7 @@ export default function CompanyTypeScreen({
           Continue
         </button>
 
-        <div className={`progress-dots flex gap-3 mt-12`}>
-          <div className="w-2 h-2 rounded-full bg-[#E0E0E0]"></div>
-          <div className="w-2 h-2 rounded-full bg-[#E0E0E0]"></div>
-          <div className="w-2 h-2 rounded-full bg-[#484848]"></div>
-          <div className="w-2 h-2 rounded-full bg-[#E0E0E0]"></div>
-        </div>
+        <ProgressDots currentStep={2} onStepClick={onStepClick} />
       </form>
     </Fragment>
   );
