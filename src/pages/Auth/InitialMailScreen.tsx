@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Fragment } from "react";
 import type { FormEvent } from "react";
 import { Link } from "react-router";
@@ -32,12 +32,16 @@ export default function InitialMailScreen({
     return isTypingPassword ? getPasswordStrength(password) : "Weak";
   }, [password, isTypingPassword]);
 
+  useEffect(() => {
+    if (password.length === 0) {
+      setIsTypingPassword(false);
+    }
+  }, [password]);
+
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     handleSubmit();
   };
-
-  console.log("passwordStrength", passwordStrength);
 
   return (
     <Fragment>
@@ -154,7 +158,6 @@ export default function InitialMailScreen({
               setPassword(e.target.value);
               setIsTypingPassword(true);
             }}
-            onBlur={() => setIsTypingPassword(false)}
           />
         </div>
         {isTypingPassword && (
@@ -206,7 +209,7 @@ export default function InitialMailScreen({
           </div>
         )}
         <button
-          className={`px-6 py-3 bg-primary rounded-[1000px] text-white font-semibold ${
+          className={`px-6 py-3 bg-primary rounded-[1000px] text-white font-semibold cursor-pointer ${
             isLongScreen ? "mt-12" : "mt-8"
           }`}
           style={{
@@ -225,7 +228,7 @@ export default function InitialMailScreen({
         </div>
         <div className="sso-buttons flex flex-col gap-3">
           <button
-            className={`flex items-center justify-center gap-3 px-4 py-3 rounded-[1000px] bg-white font-google-sans-flex font-semibold text-[#232323]`}
+            className={`flex items-center justify-center gap-3 px-4 py-3 rounded-[1000px] bg-white font-google-sans-flex font-semibold cursor-pointer text-[#232323]`}
             style={{
               border: "0.5px solid #C9C9C9",
               boxShadow: shadowConstant as string,
@@ -236,7 +239,7 @@ export default function InitialMailScreen({
             Continue with Google
           </button>
           <button
-            className={`flex items-center justify-center gap-3 px-4 py-3 rounded-[1000px] bg-white font-google-sans-flex font-semibold text-[#232323]`}
+            className={`flex items-center justify-center gap-3 px-4 py-3 rounded-[1000px] bg-white font-google-sans-flex font-semibold cursor-pointer text-[#232323]`}
             style={{
               border: "0.5px solid #C9C9C9",
               boxShadow: shadowConstant as string,

@@ -48,7 +48,6 @@ export const getPasswordStrength = (password: string): PasswordStrength => {
   if (hasRepeatedChars) score -= 1;
   if (hasCommonPattern) score -= 2;
 
-  // Determine strength based on score and strict B2B requirements
   // Strong: 12+ chars with all 4 character types
   if (
     length >= 12 &&
